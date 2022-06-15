@@ -1,0 +1,41 @@
+CREATE TABLE IF NOT EXISTS Cliente (
+    Id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    Nome TEXT NOT NULL, 
+    Endereco TEXT, 
+    Bairro TEXT, 
+    Numero TEXT,
+    Cep TEXT, 
+    Fone TEXT
+);
+
+CREATE TABLE IF NOT EXISTS Produto (
+	Codigo INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 
+    Nome TEXT NOT NULL, 
+	Valor DOUBLE(9,2) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Compra (
+	Id INTEGER PRIMARY KEY AUTOINCREMENT, 
+	Cliente_Id INTEGER NOT NULL,
+	ValorTotal DOUBLE(9,2) NOT NULL,
+	Status INTEGER(1) NOT NULL,
+	Criado TIMESTAMP,
+	FOREIGN KEY(Cliente_Id) REFERENCES Cliente(Id)
+);
+
+CREATE TABLE IF NOT EXISTS ProdutoCompra (
+   	Produto_Codigo INTEGER NOT NULL,
+   	Compra_Id INTEGER NOT NULL,
+   	ValorProduto DOUBLE(9,2) NOT NULL,
+   	Quantidade DOUBLE(9,2) NOT NULL,
+   	ValorTotal DOUBLE(9,2) NOT NULL,
+	FOREIGN KEY(Compra_Id) REFERENCES Compra(Id),
+	FOREIGN KEY(Produto_Codigo) REFERENCES Produto(Codigo)
+);
+
+CREATE TABLE IF NOT EXISTS Entrega (
+	Compra_Id INTEGER NOT NULL,
+	Entregador TEXT NOT NULL,
+	DataHora TIMESTAMP,
+	FOREIGN KEY(Compra_Id) REFERENCES Compra(Id)
+);
