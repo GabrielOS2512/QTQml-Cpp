@@ -17,6 +17,8 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick REQUIRED)
 set(PROJECT_SOURCES
         main.cpp
         qml.qrc
+        database/database.h
+        database/database.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
