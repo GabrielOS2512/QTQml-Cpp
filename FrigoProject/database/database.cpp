@@ -29,6 +29,11 @@ database_sptr Database::getInstance()
     return database_;
 }
 
+Database::~Database()
+{
+
+}
+
 bool Database::open()
 {
     if (db_.isOpen()) {
@@ -36,7 +41,7 @@ bool Database::open()
     }
 
     db_ = QSqlDatabase::addDatabase("QSQLITE",DatabaseName);
-    db_.setDatabaseName(QString::fromStdString(db_connection));
+    db_.setDatabaseName(db_connection);
     if (!db_.open()) {
         qDebug() << "Error opening database: "<< db_connection;
     } else {

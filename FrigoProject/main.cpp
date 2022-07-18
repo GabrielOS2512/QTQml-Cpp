@@ -1,10 +1,5 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include <QQmlContext>
-#include <QLocale>
-#include <QDir>
-#include <QDebug>
-
 #include "database/database.h"
 
 int main(int argc, char *argv[])
@@ -14,6 +9,11 @@ int main(int argc, char *argv[])
 #endif
 
     QGuiApplication app(argc, argv);
+
+    QGuiApplication::setOrganizationName("Frigocamara");
+    QGuiApplication::setOrganizationDomain("Gabriel");
+    QGuiApplication::setApplicationName("Gabriel");
+    QGuiApplication::setApplicationVersion("1.0");
 
     qDebug() << "#####################################";
     qDebug() << "####### Starting  Application #######";
@@ -26,17 +26,13 @@ int main(int argc, char *argv[])
     }
 
     QQmlApplicationEngine engine;
-    const QUrl url(QStringLiteral("qrc:/main.qml"));
+    const QUrl url(QStringLiteral("qrc:/qml/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {
         if (!obj && url == objUrl)
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
     engine.load(url);
-    //define app path to be used in images sources
-    engine.rootContext()->setContextProperty("appPath", "file:/" + QDir::currentPath());
-
-    Database::release();
 
     return app.exec();
 }

@@ -12,12 +12,12 @@
 class Database;
 typedef std::shared_ptr<Database> database_sptr;
 
-static char *DatabaseName = "FRIGODB";
-static char *db_connection="FRIGODB.db3";
-static char *db_login="";
-static char *db_password="";
-static char *db_schema="";
-static char *db_type="sqlite";
+static QString DatabaseName =  "FRIGODB";
+static QString db_connection = "FRIGODB.db3";
+static QString db_login =      "";
+static QString db_password =   "";
+static QString db_schema =     "";
+static QString db_type =       "sqlite";
 
 static database_sptr database_(nullptr);
 
