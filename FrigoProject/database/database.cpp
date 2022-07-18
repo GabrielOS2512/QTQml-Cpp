@@ -1,4 +1,5 @@
 #include "database.h"
+#include <QSqlQuery>
 
 bool Database::init()
 {

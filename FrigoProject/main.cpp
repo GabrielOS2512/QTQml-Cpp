@@ -1,6 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include "database/database.h"
+#include "database/produto.h"
 
 int main(int argc, char *argv[])
 {
@@ -25,6 +26,10 @@ int main(int argc, char *argv[])
         qDebug() << "Failed to start Database...";
     }
 
+    produto_sptr produto;
+    produto.reset(new Produto("Contra-Filet",28.99));
+    qDebug() << "Produto Save = " << produto->save();
+
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/qml/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
@@ -34,5 +39,6 @@ int main(int argc, char *argv[])
     }, Qt::QueuedConnection);
     engine.load(url);
 
+    Database::release();
     return app.exec();
 }

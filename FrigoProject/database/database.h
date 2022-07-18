@@ -30,6 +30,8 @@ public:
     static database_sptr getInstance();
     ~Database();
 
+     QSqlDatabase &getDatabase() { return db_; }
+
 private:
     bool open();
     bool close();

@@ -8,8 +8,14 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        database/database.h \
-        database/database.cpp
+        database/produto.cpp \
+        database/database.cpp \
+        qmlObjs/produtointerface.cpp
+
+HEADERS += \
+    database/produto.h \
+    database/database.h \
+    qmlObjs/produtointerface.h
 
 RESOURCES += qml.qrc
 
