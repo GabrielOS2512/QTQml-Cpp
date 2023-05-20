@@ -2,9 +2,14 @@ import QtQuick 2.0
 
 Rectangle {
     id: car
-    color: "blue"
-    width: 12
-    height: 20
+    color: "transparent"
+    width: 18
+    height: 30
+
+    Image {
+        anchors.fill: parent
+        source: "../img/cars/car1.png"
+    }
 
     property real speed: 0;
     property real maxSpeed: 7;

@@ -1,2 +1,4 @@
 build-Frigo*
-
+build-Game*
+*.pro.user*
+*.user

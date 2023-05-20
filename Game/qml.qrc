@@ -5,5 +5,8 @@
         <file>img/image.png</file>
         <file>components/Car.qml</file>
         <file>img/imagem2.png</file>
+        <file>img/cars/car1.png</file>
+        <file>img/track1.png</file>
+        <file>img/interlagos.png</file>
     </qresource>
 </RCC>

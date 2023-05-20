@@ -62,7 +62,7 @@ ApplicationWindow {
     Column {
         z: 100
         x: 0
-        y: 10
+        y: 30
         Label {
             text: "Speed: " +car.speed
         }
@@ -79,8 +79,8 @@ ApplicationWindow {
 
     Image {
         id: image
-        anchors.fill: parent
-        source: "img/imagem2.png"
+        anchors.centerIn: parent
+        source: "img/image.png"
         visible: false
     }
 
@@ -98,6 +98,7 @@ ApplicationWindow {
     function renderTick() {
         currentTick++
         car.newPosition()
+        canvas.drawBackgroud()
         car.rotation += car.moveAngle
 
         const context = canvas.getContext('2d');
@@ -116,21 +117,27 @@ ApplicationWindow {
         // Log the RGB color values
         let colors = red + green + blue
 
-        if (colors > 0) {
+        if (colors > 50) {
             car.colision()
         }
     }
 
     Canvas {
         id: canvas
-        width: 1200
+        width: parent.width - 100
         height: parent.height
-        anchors.centerIn: parent
+        y:0
+        x: 100
+        property real positionX: 0
+        property real positionY: 0
+
+        function drawBackgroud() {
+            const context = canvas.getContext('2d');
+            context.drawImage(image.source, positionX, positionY, canvas.width, canvas.height);
+        }
 
         Car {
             id: car
-            width: 12
-            height: 20
             x: 100
             y: 500
         }
@@ -138,8 +145,6 @@ ApplicationWindow {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                const context = canvas.getContext('2d');
-                context.drawImage(image.source, 0, 0, width, height);
                 rendererTimer.start()
             }
         }
