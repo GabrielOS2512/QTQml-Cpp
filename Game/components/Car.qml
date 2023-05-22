@@ -3,14 +3,24 @@ import QtQuick 2.0
 Rectangle {
     id: car
     color: "transparent"
-    width: 18
-    height: 30
+    width: 24
+    height: 38
+
+    Rectangle {
+        anchors.centerIn: parent
+        width: 240
+        height: 300
+        color: "transparent"
+        border.color: "red"
+        rotation: -parent.rotation
+    }
 
     Image {
         anchors.fill: parent
         source: "../img/cars/car1.png"
     }
 
+    /// Speed Properties
     property real speed: 0;
     property real maxSpeed: 7;
     property real minSpeed: -2;
@@ -18,14 +28,18 @@ Rectangle {
     property real acceleration: 0.001;
     property real maxAcceleration: 0.05;
     property real braking: 0.2;
-    /// stearing
+    /// Stearing
     property real angle: 0;
     property real moveAngle: 0;
-    /// car condition
+    /// Car condition
     property real hp: 100;
     property real tyres: 1.0;
     property real fuel: 0.3;
+    /// Time and Lap
+    property string lapTime
+    property int currentLap: 1
 
+    /// Actions
     property bool isUp: false
     property bool isDown: false
     property bool isRight: false
@@ -33,6 +47,7 @@ Rectangle {
     signal action
 
     onAction: {
+        car.moveAngle = 0
         if(isUp) {
             if (delta < 0)
                 delta = 0;
@@ -124,4 +139,15 @@ Rectangle {
     function changeTyres() {
         tyres = 1.0
     }
+
+    Timer {
+        property int counter: 0
+        id: lapTimer
+        interval: 11; running: true; repeat: true
+        onTriggered: {
+            counter += 11
+            lapTime = new Date(counter).toLocaleTimeString(Qt.locale(), "mm:" + "ss:" + "zzz")
+        }
+    }
+
 }

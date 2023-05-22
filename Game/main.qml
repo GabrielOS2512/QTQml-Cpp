@@ -75,30 +75,21 @@ ApplicationWindow {
         Label {
             text: "Tyres: " + ((car.tyres) * 100).toFixed(2) + "%";
         }
-    }
-
-    Image {
-        id: image
-        anchors.centerIn: parent
-        source: "img/image.png"
-        visible: false
-    }
-
-    Timer {
-        id: rendererTimer
-        interval: 20
-        repeat: true
-        onTriggered: {
-            car.moveAngle = 0
-            car.action()
-            renderTick()
+        Label {
+            text: "Laps: " + (car.currentLap) + "/12";
+            font.bold: true
         }
+        Label {
+            text: "Lap Time: " + car.lapTime;
+            font.bold: true
+        }
+
     }
 
     function renderTick() {
         currentTick++
-        car.newPosition()
         canvas.drawBackgroud()
+        car.newPosition()
         car.rotation += car.moveAngle
 
         const context = canvas.getContext('2d');
@@ -148,5 +139,22 @@ ApplicationWindow {
                 rendererTimer.start()
             }
         }
+    }
+
+    Timer {
+        id: rendererTimer
+        interval: 20
+        repeat: true
+        onTriggered: {
+            car.action()
+            renderTick()
+        }
+    }
+
+    Image {
+        id: image
+        anchors.centerIn: parent
+        source: "img/image.png"
+        visible: false
     }
 }
