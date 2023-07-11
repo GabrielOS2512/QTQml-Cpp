@@ -8,5 +8,6 @@
         <file>img/cars/car1.png</file>
         <file>img/track1.png</file>
         <file>img/interlagos.png</file>
+        <file>RaceGame.qml</file>
     </qresource>
 </RCC>
