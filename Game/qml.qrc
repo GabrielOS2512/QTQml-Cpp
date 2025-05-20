@@ -9,5 +9,6 @@
         <file>img/track1.png</file>
         <file>img/interlagos.png</file>
         <file>RaceGame.qml</file>
+        <file>Futebol.qml</file>
     </qresource>
 </RCC>

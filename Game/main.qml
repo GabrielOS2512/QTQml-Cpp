@@ -1,12 +1,16 @@
 ﻿import QtQuick 2.3
 import QtQuick.Controls 1.2
 import QtQuick.Window 2.3
+import GFutebol 1.0
 
 ApplicationWindow {
     id: root
     width: 200; height: 200
     visible: true
-    visibility: Window.Maximized
+
+    Futebol {
+        id: idFutebol;
+    }
 
     Column {
         anchors.centerIn: parent
@@ -29,10 +33,10 @@ ApplicationWindow {
         Button {
             height: 40
             width: 200
-            text: qsTr("Race Game")
+            text: qsTr("Futebol")
 
             onClicked: {
-                var component = Qt.createComponent("RaceGame.qml")
+                var component = Qt.createComponent("Futebol.qml")
                 var window = component.createObject(root)
                 window.show()
             }
