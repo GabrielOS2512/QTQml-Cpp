@@ -10,5 +10,6 @@
         <file>img/interlagos.png</file>
         <file>RaceGame.qml</file>
         <file>Futebol.qml</file>
+        <file>qml/futebol/PlacaresRodada.qml</file>
     </qresource>
 </RCC>

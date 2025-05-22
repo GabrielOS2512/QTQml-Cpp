@@ -1,15 +1,15 @@
 ﻿import QtQuick 2.3
 import QtQuick.Controls 1.2
 import QtQuick.Window 2.3
-import GFutebol 1.0
+import GPartida 1.0
 
 ApplicationWindow {
     id: root
     width: 200; height: 200
     visible: true
 
-    Futebol {
-        id: idFutebol;
+    Partida {
+        id: idPartida;
     }
 
     Column {

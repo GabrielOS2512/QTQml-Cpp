@@ -1,7 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include "cpp/futebol.h"
-
+#include "cpp/partida.h"
 
 int main(int argc, char *argv[])
 {
@@ -9,9 +8,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
 
-
-    qmlRegisterType<Futebol>("GFutebol", 1, 0, "Futebol");
-
+    qmlRegisterType<Partida>("GPartida", 1, 0, "Partida");
 
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;

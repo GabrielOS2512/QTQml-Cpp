@@ -12,7 +12,7 @@ ApplicationWindow {
     property int currentTick: 0
 
     Component.onCompleted: {
-        idFutebol.iniciarPartida();
+        idPartida.iniciarPartida();
     }
 
 }
