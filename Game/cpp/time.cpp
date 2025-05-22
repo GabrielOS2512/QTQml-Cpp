@@ -4,7 +4,7 @@ Time::Time(QString nome, Atributos atr) :
     nome_(nome),
     atr_(atr)
 {
-    stats_ = { 0, 0, 0};
+    stats_ = { 0, 0, 0, 0};
 }
 
 Time::Time(QString nome, Atributos atr, Stats stats) :
@@ -58,4 +58,24 @@ void Time::setGols(int newGols)
 void Time::fezGol()
 {
     gols_++;
+}
+
+void Time::chance()
+{
+    stats_.chances++;
+}
+
+void Time::chuteAGol()
+{
+    stats_.chutesGol++;
+}
+
+void Time::defesa()
+{
+    stats_.defesas++;
+}
+
+void Time::grandeChance()
+{
+    stats_.grandesChances++;
 }

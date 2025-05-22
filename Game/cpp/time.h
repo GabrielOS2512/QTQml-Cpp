@@ -5,7 +5,9 @@
 
 struct Atributos {
     int atk;
+    int mid;
     int def;
+    int glr;
     double tec;
 };
 
@@ -13,6 +15,7 @@ struct Stats {
     int chances;
     int chutesGol;
     int defesas;
+    int grandesChances;
 };
 class Time;
 typedef std::shared_ptr<Time> time_sptr;
@@ -32,6 +35,11 @@ public:
     int gols() const;
     void setGols(int newGols);
     void fezGol();
+
+    void chance();
+    void chuteAGol();
+    void defesa();
+    void grandeChance();
 
 private:
     QString nome_;

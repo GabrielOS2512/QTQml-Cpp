@@ -2,14 +2,18 @@
 import QtQuick.Controls 1.2
 import QtQuick.Window 2.3
 import GPartida 1.0
+import GRodadaModel 1.0
 
 ApplicationWindow {
     id: root
     width: 200; height: 200
     visible: true
 
-    Partida {
+    GPartida {
         id: idPartida;
+    }
+    GRodadaModel {
+        id: idRodadaModel;
     }
 
     Column {

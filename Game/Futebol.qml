@@ -4,6 +4,7 @@ import QtQuick.Window 2.3
 import 'components'
 
 ApplicationWindow {
+    id: futebolRoot
     visible: true
     title: qsTr("Futebol")
     color: "blue"
@@ -12,7 +13,19 @@ ApplicationWindow {
     property int currentTick: 0
 
     Component.onCompleted: {
-        idPartida.iniciarPartida();
+        //idPartida.iniciarPartida();
+    }
+
+    Button {
+        height: 40
+        width: 200
+        text: qsTr("Placares")
+
+        onClicked: {
+            var component = Qt.createComponent(":/qml/futebol/PlacaresRodada.qml")
+            var window = component.createObject(futebolRoot)
+            window.show()
+        }
     }
 
 }

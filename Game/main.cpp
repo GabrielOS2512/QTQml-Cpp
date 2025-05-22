@@ -1,6 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include "cpp/partida.h"
+#include "cpp/rodadamodel.h"
 
 int main(int argc, char *argv[])
 {
@@ -8,7 +9,8 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
 
-    qmlRegisterType<Partida>("GPartida", 1, 0, "Partida");
+    qmlRegisterType<Partida>("GPartida", 1, 0, "GPartida");
+    qmlRegisterType<RodadaModel>("GRodadaModel", 1, 0, "GRodadaModel");
 
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
